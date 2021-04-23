@@ -1,0 +1,215 @@
+plugins {
+    id 'com.android.application'
+    id 'com.blankj.bus'
+//    id 'com.google.gms.google-services'
+}
+
+//apply plugin: rootProject.ext.applicationplug
+//apply plugin: rootProject.ext.blankj_plug
+//apply plugin: rootProject.ext.google_services_plug
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled rootProject.ext.multiDexEnabled
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+        //设置支持的手机的类型
+//        ndk {
+//            // 设置支持的SO库架构
+//            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+//            //, 'x86_64', 'x86'
+//        }
+        //极光推送
+//        manifestPlaceholders = [
+//                JPUSH_PKGNAME: "com.renogy.dchome",
+//                JPUSH_APPKEY : "5ee017d98ee6c6cf6d68ab8e", //JPush 上注册的包名对应的 Appkey.
+//                JPUSH_CHANNEL: "developer-dchome", //暂时填写默认值即可.
+//        ]
+    }
+
+    //适配Facebook 上架GooglePlay后 出现默认初始化Facebook提示
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            output.processManifest.doLast {
+//                String manifestPath = "$manifestOutputDirectory/AndroidManifest.xml"
+//                // Stores the contents of the manifest.
+//                def manifestOutFile = file(manifestPath)
+//                if (manifestOutFile.exists()) {
+//                    //xxx表示具体的包名
+//                    def newFileContents = manifestOutFile.getText('UTF-8').replace("com.facebook.internal.FacebookInitProvider",
+//                            "com.renogy.dchome.utils.FacebookInitProviderReplacer")
+//                    manifestOutFile.write(newFileContents, 'UTF-8')
+//                }
+//            }
+//        }
+//    }
+
+
+    //自定义apk名称含版本号信息
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "DC Home-${variant.versionName}-${releaseTime()}.apk"
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file(rootProject.ext.storeFile)
+            storePassword rootProject.ext.storePassword
+            keyPassword rootProject.ext.keyPassword
+            keyAlias rootProject.ext.keyAlias
+            storeType rootProject.ext.storeType
+        }
+    }
+
+    buildTypes {
+        release {
+            //在这里添加：
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+            crunchPngs true
+            minifyEnabled true
+            shrinkResources true
+            aaptOptions.cruncherEnabled = false
+            aaptOptions.useNewCruncher = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    repositories { flatDir { dirs 'libs' } }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+//    dataBinding {
+//        enabled = true
+//    }
+
+}
+
+//获取编译时间
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation rootProject.ext.appcompat
+    implementation rootProject.ext.constraintlayout
+    testImplementation rootProject.ext.junit
+    androidTestImplementation rootProject.ext.testjunit
+    androidTestImplementation rootProject.ext.testespresso
+    //ui
+    implementation rootProject.ext.recyclerview
+    implementation rootProject.ext.cardview
+    implementation rootProject.ext.circleimageview
+    implementation rootProject.ext.smartRefresh
+    implementation rootProject.ext.baseAdapterHelper
+//    implementation rootProject.ext.mpAndroidChart
+    implementation rootProject.ext.googleMaterial
+//    implementation rootProject.ext.materialprogressbar
+    implementation rootProject.ext.banner
+
+    //webView
+    implementation rootProject.ext.agentweb
+    implementation rootProject.ext.agentwebfilechooser
+    //butterKnife，舍弃
+//    implementation rootProject.ext.butterknife
+//    annotationProcessor rootProject.ext.butterknifecompiler
+
+//    //原点控件
+//    implementation rootProject.ext.badgeview
+//    //时间选择
+//    implementation rootProject.ext.pickerView
+    //弹窗
+    implementation rootProject.ext.popup
+    //替代SharedPreferences
+    implementation rootProject.ext.mmkv
+    //逼乎图片选择器
+    implementation rootProject.ext.matisse
+    //图片相关（查看图片）
+    implementation rootProject.ext.glide
+    annotationProcessor rootProject.ext.glideProcessor
+    //gson
+    implementation rootProject.ext.gson
+    //网络相关
+    implementation rootProject.ext.rxandroid
+//    implementation rootProject.ext.rxjava
+    implementation rootProject.ext.okhttp3logging
+    implementation rootProject.ext.okhttpurlconnection
+    implementation rootProject.ext.okhttp
+    implementation rootProject.ext.retrofit2
+    implementation rootProject.ext.retorfit2convertergson
+//    implementation rootProject.ext.retorfit2adapterrxjava2
+    implementation rootProject.ext.adapterrxjava3
+//    //阿里云oss
+//    implementation rootProject.ext.aliyun_oss
+
+    implementation rootProject.ext.easypermissions
+
+    //工具类
+    implementation rootProject.ext.utilcodex
+    //本地数据库
+    implementation rootProject.ext.litepal
+    //动画
+    implementation rootProject.ext.lottie
+
+    //liveData
+    implementation rootProject.ext.livedata
+    //viewModel
+    implementation rootProject.ext.viewmodel
+    //flexBox流布局
+    implementation rootProject.ext.flexbox
+
+    //登录
+//    implementation rootProject.ext.facebook
+//    implementation rootProject.ext.twitter
+//    implementation rootProject.ext.twitter_core
+//    implementation rootProject.ext.google
+//    implementation rootProject.ext.google_gms
+//    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+//    implementation rootProject.ext.firebase_auth
+//    implementation rootProject.ext.firebase_msg
+//    //极光推送
+//    implementation rootProject.ext.jcore
+//    implementation rootProject.ext.jpush
+    //video 压缩,例子(引用module)
+//    implementation project(path: ':videoCompress')
+    //视频缓存
+//    implementation rootProject.ext.videocache
+    //视频播放器
+//    implementation rootProject.ext.jiaozivideop
+
+    //富文本编辑器（引用 aar 包）
+//    implementation(name: 'renogyHtml', ext: 'aar')
+
+    //蓝牙的jar包（引用 jar 包）
+//    implementation files('libs/AndroidBleApi_V1.1.5.jar')
+
+    //分包
+    implementation rootProject.ext.multidex
+    //主流混淆文件合集
+    implementation rootProject.ext.freeproguard
+
+    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.0'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.0'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.0'
+
+}
