@@ -1,4 +1,4 @@
-package com.renogy.mvpmode.http;
+package com.renogy.mvpmode.http.presenter;
 
 import android.content.Context;
 
@@ -44,11 +44,14 @@ public class LoginPresenter extends RxPresenter<LoginPresenter.LoginPresenterVie
             @Override
             public void onRxSuccess(LoginData response) {
                 AppHelper.getInstance().setToken(response.getToken());
+                AppHelper.getInstance().setUserName(request.getUserName());
+                AppHelper.getInstance().setPassword(request.getPassword());
+                AppHelper.getInstance().setLoginState(true);
                 mView.loginSuccess();
             }
 
             @Override
-            public void onRxError(Throwable throwable) {
+            public void onRxError() {
 
             }
         });

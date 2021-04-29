@@ -1,4 +1,4 @@
-package com.renogy.mvpmode.base.activity;
+package com.renogy.mvpmode.base.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,23 +8,17 @@ import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.renogy.mvpmode.utils.LanguageUtils;
-import com.trello.rxlifecycle4.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle4.components.support.RxFragment;
 
 /**
- * @author Create by 17474 on 2021/4/23.
+ * @author Create by 17474 on 2021/4/27.
  * Email： lishuwentimor1994@163.com
- * Describe：切换语言，这里处理一些最基础的事务
+ * Describe：
  */
-public abstract class AbstractBaseActivity extends RxAppCompatActivity {
+public abstract class AbstractBaseFragment extends RxFragment {
 
     //日志输出标志
-    protected final String TAG = "MVP" + this.getClass().getSimpleName();
-
-    //适配多语言版本
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LanguageUtils.initLanguage(newBase));
-    }
+    protected static final String TAG = "AbstractBaseFragment";
 
 
     protected static void startActivity1(final Class<? extends Activity> clz) {
@@ -43,7 +37,6 @@ public abstract class AbstractBaseActivity extends RxAppCompatActivity {
         ActivityUtils.startActivity(options, clz);
     }
 
-
     //绑定布局id
     protected abstract int getLayoutId();
 
@@ -52,4 +45,5 @@ public abstract class AbstractBaseActivity extends RxAppCompatActivity {
 
     //初始化数据
     protected abstract void initData();
+
 }

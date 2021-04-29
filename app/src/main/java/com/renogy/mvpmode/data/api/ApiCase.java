@@ -2,13 +2,15 @@ package com.renogy.mvpmode.data.api;
 
 import com.renogy.mvpmode.data.bean.login.LoginData;
 import com.renogy.mvpmode.data.bean.login.LoginRequest;
+import com.renogy.mvpmode.data.bean.main.BannerBean;
+import com.renogy.mvpmode.data.bean.main.TopicResponse;
 import com.renogy.mvpmode.utils.RxUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
+
+import static com.renogy.mvpmode.common.AppConstants.LIST_DEFAULT_COUNT;
 
 /**
  * @author Create by 17474 on 2021/4/22.
@@ -29,12 +31,21 @@ public class ApiCase {
 
 
     public <T> Observable<LoginData> login(LoginRequest loginRequest) {
-        Map<String, String> map = new HashMap<>();
-        map.put("userEmail", loginRequest.getUserName());
-        map.put("userPassword", loginRequest.getPassword());
-        map.put("appVersion", loginRequest.getAppVersion());
-        map.put("channel", loginRequest.getChannel());
-        return API_IMPL.login(map)
+        return API_IMPL.login(loginRequest)
+                .compose(RxUtils.rxSchedulerHelper())
+                .compose(RxUtils.handleResult());
+    }
+
+    //获取帖子 列表
+    public <T> Observable<TopicResponse> loadPostList(String pageNum, Map<String, String> map) {
+        return API_IMPL.loadPostList(pageNum, String.valueOf(LIST_DEFAULT_COUNT), map)
+                .compose(RxUtils.rxSchedulerHelper())
+                .compose(RxUtils.handleResult());
+    }
+
+    //模拟获取banner 列表
+    public <T> Observable<BannerBean> loadBanner() {
+        return API_IMPL.loadBanner()
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(RxUtils.handleResult());
     }

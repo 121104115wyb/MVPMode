@@ -33,7 +33,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class HttpClientManager {
 
-
     private final static int CONNECT_TIME = 20;
     private final static int READ_TIME = 20;
     private final static int WRITE_TIME = 20;
@@ -59,7 +58,6 @@ public class HttpClientManager {
      * @return 默认的客户端
      */
     public static OkHttpClient getDefaultDebugClient() {
-
         try {
             return getBaseHttpClient(KEY_FILE, CONNECT_TIME, READ_TIME, WRITE_TIME, new NetWorkInterceptor(), true);
         } catch (IOException e) {

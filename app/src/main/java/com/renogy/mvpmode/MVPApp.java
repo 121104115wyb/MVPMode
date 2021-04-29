@@ -178,5 +178,4 @@ public class MVPApp extends MultiDexApplication {
         //轻量化存储
         MkvEditorUtils.getInstance().init();
     }
-
 }

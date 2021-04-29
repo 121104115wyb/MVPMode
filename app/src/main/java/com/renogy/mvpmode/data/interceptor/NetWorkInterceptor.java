@@ -24,9 +24,8 @@ import okhttp3.Response;
  */
 public class NetWorkInterceptor implements Interceptor {
     //你的Url中token的key
-    private final static String TOKEN_KEY = "bm-token";
+    private final static String TOKEN_KEY = "x-token";
     private static Map<String, String> requestMap = new HashMap<>();
-
 
     /**
      * 添加您的公共参数

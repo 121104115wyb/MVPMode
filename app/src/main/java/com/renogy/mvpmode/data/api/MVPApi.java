@@ -2,14 +2,21 @@ package com.renogy.mvpmode.data.api;
 
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.data.bean.login.LoginData;
+import com.renogy.mvpmode.data.bean.login.LoginRequest;
+import com.renogy.mvpmode.data.bean.main.BannerBean;
+import com.renogy.mvpmode.data.bean.main.TopicResponse;
 
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * @author Create by 17474 on 2021/4/20.
@@ -18,19 +25,7 @@ import retrofit2.http.POST;
  */
 public interface MVPApi {
 
-
-    /**
-     * 登陆
-     * http://www.wanandroid.com/user/login
-     *
-     * @param username user name
-     * @param password password
-     * @return 登陆数据
-     */
-    @POST("user/login")
-    @FormUrlEncoded
-    Observable<BaseResponse<LoginData>> getLoginData(@Field("username") String username, @Field("password") String password);
-
+    //下面接口增删改查，都做下简单示例
 
     /**
      * 登陆
@@ -39,8 +34,23 @@ public interface MVPApi {
      * @return 登陆数据
      */
     @POST("api/v1/user/login")
-    @FormUrlEncoded
-    Observable<BaseResponse<LoginData>> login(@FieldMap Map<String,String> map);
+    Observable<BaseResponse<LoginData>> login(@Body LoginRequest loginRequest);
+
+
+    /**
+     * 测试获取帖子列表
+     * 仅限用于测试，如发现用于商业用途，八个雅璐
+     */
+    @GET("api/v1/community/get_post_list/{pageNum}/{size}")
+    Observable<BaseResponse<TopicResponse>> loadPostList(@Path("pageNum") String pageNum, @Path("size") String size, @QueryMap Map<String, String> map);
+
+
+    /**
+     * 模拟网络获取banner
+     *
+     * @return banner 广告列表
+     */
+    Observable<BaseResponse<BannerBean>> loadBanner();
 
 
 }

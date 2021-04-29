@@ -35,7 +35,7 @@ public enum ExceptionEnum {
     /**
      * 服务器地址或者端口错误 IP address of a host
      */
-    SERVER_ERROR(10005, "Server is not responding"),
+    SERVER_ERROR(10005, "Please check network connection"),
 
     /**
      * 服务器不理解请求的语法。

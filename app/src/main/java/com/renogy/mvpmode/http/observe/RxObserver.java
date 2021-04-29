@@ -7,6 +7,7 @@ import com.google.gson.JsonParseException;
 import com.renogy.mvpmode.base.contract.BaseImpl;
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.common.ExceptionEnum;
+import com.renogy.mvpmode.data.exception.RxException;
 
 import org.json.JSONException;
 
@@ -98,10 +99,12 @@ public abstract class RxObserver<T> extends ResourceObserver<T> {
             ExceptionError(FORMAT_ERROR, e.getMessage());
         } else if (e instanceof UnknownServiceException) {
             ExceptionError(UNKNOWN_SERVER_ERROR, e.getMessage());
+        } else if (e instanceof RxException) {
+            businessError(((RxException) e).getResponse());
         } else {
             ExceptionError(UNKNOWN_ERROR, e.getMessage());
         }
-        onRxError(e);
+        onRxError();
     }
 
     @Override
@@ -115,11 +118,9 @@ public abstract class RxObserver<T> extends ResourceObserver<T> {
      * @param response 服务器响应数据
      */
     private void businessError(BaseResponse response) {
-        if (response != null) {
-            ExceptionEnum error = ExceptionEnum.BUSINESS_ERROR;
-            error.setCode(Integer.parseInt(response.getCode()));
-            error.setErrorMsg(response.getMsg());
-            ExceptionError(error, "");
+        if (response != null && show) {
+            String errorMsg = "errorCode：" + response.getCode() + " errorMsg: " + response.getMsg();
+            baseView.showToast(errorMsg);
         }
     }
 
@@ -179,5 +180,5 @@ public abstract class RxObserver<T> extends ResourceObserver<T> {
 
     public abstract void onRxSuccess(T response);
 
-    public abstract void onRxError(Throwable throwable);
+    public abstract void onRxError();
 }

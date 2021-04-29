@@ -6,10 +6,21 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.SnackbarUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.contract.BaseImpl;
 import com.renogy.mvpmode.base.presenter.BasePresenter;
 import com.renogy.mvpmode.databinding.ActivityBaseBinding;
+import com.renogy.mvpmode.utils.RxUtils;
+
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.observers.DefaultObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 /**
@@ -32,12 +43,36 @@ public abstract class BaseActivity<T extends BasePresenter, VB extends ViewBindi
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-        initParams(savedInstanceState);
+        initParams(getIntent().getExtras());
         bindView = ActivityBaseBinding.inflate(getLayoutInflater());
         setContentView(bindView.getRoot());
         viewBinding = getViewBinding();
         onViewCreate();
         initData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Observable.just(NetworkUtils.isConnected()).compose(RxUtils.rxSingleSchedulerHelper())
+                .subscribe(new DefaultObserver<Boolean>() {
+                    @Override
+                    public void onNext(@NonNull Boolean aBoolean) {
+                        if (!aBoolean) {
+                            showToast(getString(R.string.network_no_connect));
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        showToast(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
@@ -66,7 +101,7 @@ public abstract class BaseActivity<T extends BasePresenter, VB extends ViewBindi
 
     @Override
     public void showSnackBar(String msg) {
-//        SnackbarUtils.with(this).show()
+        SnackbarUtils.with(bindView.snackView).setMessage("哈哈哈哈哈哈").show();
     }
 
     protected void initParams(Bundle bundle) {

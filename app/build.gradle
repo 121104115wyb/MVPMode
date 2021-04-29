@@ -113,6 +113,8 @@ dependencies {
 
     implementation rootProject.ext.appcompat
     implementation rootProject.ext.constraintlayout
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
     testImplementation rootProject.ext.junit
     androidTestImplementation rootProject.ext.testjunit
     androidTestImplementation rootProject.ext.testespresso
@@ -208,8 +210,8 @@ dependencies {
     //主流混淆文件合集
     implementation rootProject.ext.freeproguard
 
-    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.0'
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.0'
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.0'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
 
 }

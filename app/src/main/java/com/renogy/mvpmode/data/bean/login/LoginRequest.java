@@ -3,22 +3,24 @@ package com.renogy.mvpmode.data.bean.login;
 import com.google.gson.annotations.SerializedName;
 import com.renogy.mvpmode.base.request.BaseRequest;
 
+import java.io.Serializable;
+
 /**
  * @author Create by 17474 on 2021/4/20.
  * Email： lishuwentimor1994@163.com
  * Describe：登录的请求
  */
-public class LoginRequest extends BaseRequest {
+public class LoginRequest extends BaseRequest implements Serializable {
 
     @SerializedName("userEmail")
     private String userName;
     @SerializedName("userPassword")
     private String password;
-
     @SerializedName("appVersion")
     private String appVersion;
     @SerializedName("channel")
     private String channel;
+
 
     public String getAppVersion() {
         return appVersion;

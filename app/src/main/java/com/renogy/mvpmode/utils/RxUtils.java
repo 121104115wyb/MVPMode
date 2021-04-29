@@ -1,5 +1,6 @@
 package com.renogy.mvpmode.utils;
 
+import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.data.exception.RxException;
 
@@ -49,6 +50,17 @@ public class RxUtils {
     }
 
     /**
+     * 统一线程处理
+     *
+     * @param <T> 指定的泛型类型
+     * @return ObservableTransformer
+     */
+    public static <T> ObservableTransformer<T, T> rxSingleSchedulerHelper() {
+        return upstream -> upstream.subscribeOn(Schedulers.single())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
      * 统一返回结果处理
      *
      * @param <T> 指定的泛型类型
@@ -59,7 +71,7 @@ public class RxUtils {
                 BaseResponse.CODE_OK.equals(tBaseResponse.getCode())
                 && tBaseResponse.getData() != null
                 ? createData(tBaseResponse.getData())
-                : Observable.error(new RxException()));
+                : Observable.error(new RxException(tBaseResponse)));
     }
 
     /**

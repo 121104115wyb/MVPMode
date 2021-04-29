@@ -4,13 +4,14 @@ import android.text.TextUtils;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.renogy.mvpmode.ui.main.MainActivity;
 import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.activity.BaseActivity;
 import com.renogy.mvpmode.data.bean.login.LoginRequest;
 import com.renogy.mvpmode.data.bean.main.SearchData;
 import com.renogy.mvpmode.databinding.ActivityLoginBinding;
-import com.renogy.mvpmode.http.LoginPresenter;
+import com.renogy.mvpmode.http.presenter.LoginPresenter;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
@@ -45,6 +46,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, ActivityLoginBin
 
     @Override
     protected void onViewCreate() {
+        viewBinding.userName.setText("jkl@126.com");
+        viewBinding.passWord.setText("qwer1234");
         viewBinding.btnLogin.setOnClickListener(v -> {
             login();
         });
@@ -62,16 +65,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter, ActivityLoginBin
 //            return;
 //        }
         String appVersion = AppUtils.getAppVersionName();
-        LoginRequest request = LoginRequest.of(userName, password, appVersion, "android");
+        LoginRequest request = LoginRequest.of(userName, password, appVersion, "3");
         Observable.just(request)
                 .map(loginRequest ->
                         !TextUtils.isEmpty(loginRequest.getPassword())
-                        && !TextUtils.isEmpty(loginRequest.getUserName()) ? "" : "用户名或者密码不能为空")
+                                && !TextUtils.isEmpty(loginRequest.getUserName()) ? "" : "用户名或者密码不能为空")
                 .subscribe(new DefaultObserver<String>() {
                     @Override
                     public void onNext(@NonNull String s) {
                         if (TextUtils.isEmpty(s)) {
-                            mPresenter.login(LoginRequest.of(userName, password, appVersion, "android"));
+                            mPresenter.login(request);
                         } else {
                             showToast(s);
                         }
