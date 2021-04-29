@@ -58,6 +58,7 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
         Log.d(TAG, "onViewCreate: ---HomeFragment----");
         homeAdapter = new HomeAdapter();
         homeAdapter.setAnimationEnable(true);
+        homeAdapter.addChildClickListener();
         _viewBing.homeRev.setLayoutManager(new LinearLayoutManager(getContext()));
         _viewBing.homeRev.setAdapter(homeAdapter);
 
@@ -91,7 +92,18 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
 
     @Override
     protected void initData() {
+        homeAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            int id = view.getId();
+            if (R.id.headImg == id) {
+                showSnackBar("点击了头像");
+            } else if (R.id.image1 == id) {
+                showSnackBar("点击了图片1");
+            } else if (R.id.image2 == id) {
+                showSnackBar("点击了图片2");
+            } else {
 
+            }
+        });
     }
 
     /**

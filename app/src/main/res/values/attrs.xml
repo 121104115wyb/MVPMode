@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    <declare-styleable name="ExitTextInput">-->
+    <!--        <attr name="ed_textHint" format="string" />-->
+    <!--        <attr name="ed_textHintColor" format="color" />-->
+    <!--        <attr name="ed_textType" format="integer" />-->
+    <!--        <attr name="ed_textColor" format="color" />-->
+    <!--        <attr name="ed_img_visible" format="boolean" />-->
+    <!--        <attr name="ed_img_src" format="reference|integer" />-->
+    <!--        <attr name="ed_textSize" format="dimension" />-->
+    <!--        <attr name="ed_textLength" format="integer" />-->
+    <!--        <attr name="ed_textLines" format="integer" />-->
+    <!--        <attr name="ed_isPassword" format="boolean" />-->
+    <!--        <attr name="ed_text_delay" format="integer" />-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="ToolBar">-->
+    <!--        <attr name="left_text" format="string" />-->
+    <!--        <attr name="left_img" format="reference" />-->
+    <!--        <attr name="left_textColor" format="color" />-->
+    <!--        <attr name="left_visibity" format="boolean" />-->
+    <!--        <attr name="title_text" format="string" />-->
+    <!--        <attr name="title_textColor" format="color" />-->
+    <!--        <attr name="title_textSize" format="dimension" />-->
+    <!--        <attr name="title_visibity" format="boolean" />-->
+    <!--        <attr name="right_visible" format="boolean" />-->
+    <!--        <attr name="right_img" format="reference" />-->
+    <!--        <attr name="right_text" format="string" />-->
+    <!--        <attr name="right_textColor" format="color" />-->
+    <!--        <attr name="default_finish" format="boolean" />-->
+    <!--    </declare-styleable>-->
+    <!--    <declare-styleable name="DashboardView">-->
+    <!--        <attr name="radius" format="dimension" />     &lt;!&ndash;扇形半径&ndash;&gt;-->
+    <!--        <attr name="startAngle" format="integer" /> &lt;!&ndash; 起始角度&ndash;&gt;-->
+    <!--        <attr name="sweepAngle" format="integer" />  &lt;!&ndash;绘制角度&ndash;&gt;-->
+    <!--        <attr name="bigSliceCount" format="integer" /> &lt;!&ndash; 长刻度条数&ndash;&gt;-->
+    <!--        <attr name="sliceCountInOneBigSlice" format="integer" /> &lt;!&ndash; 长刻度条数&ndash;&gt;-->
+    <!--        <attr name="arcColor" format="color" /> &lt;!&ndash;弧度颜色&ndash;&gt;-->
+    <!--        <attr name="measureTextSize" format="dimension" /> &lt;!&ndash;刻度字体大小&ndash;&gt;-->
+    <!--        <attr name="textColor" format="color" /> &lt;!&ndash;字体颜色&ndash;&gt;-->
+    <!--        <attr name="headerTitle" format="string" /> &lt;!&ndash;表头&ndash;&gt;-->
+    <!--        <attr name="headerTextSize" format="string" /> &lt;!&ndash;表头字体大小&ndash;&gt;-->
+    <!--        <attr name="headerRadius" format="dimension" /> &lt;!&ndash;表头半径&ndash;&gt;-->
+    <!--        <attr name="pointerRadius" format="dimension" /> &lt;!&ndash;指针半径&ndash;&gt;-->
+    <!--        <attr name="circleRadius" format="dimension" /> &lt;!&ndash;中心圆半径&ndash;&gt;-->
+    <!--        <attr name="minValue" format="integer" /> &lt;!&ndash;最小值&ndash;&gt;-->
+    <!--        <attr name="maxValue" format="integer" /> &lt;!&ndash;最大值&ndash;&gt;-->
+    <!--        <attr name="realTimeValue" format="float" /> &lt;!&ndash;实时值&ndash;&gt;-->
+    <!--        <attr name="stripeWidth" format="dimension" /> &lt;!&ndash;色带宽度&ndash;&gt;-->
+    <!--        <attr name="stripeMode"> &lt;!&ndash;色条显示位置&ndash;&gt;-->
+    <!--            <enum name="normal" value="0" />-->
+    <!--            <enum name="inner" value="1" />-->
+    <!--            <enum name="outer" value="2" />-->
+    <!--        </attr>-->
+    <!--        <attr name="bgColor" format="color" /> &lt;!&ndash;背景颜色&ndash;&gt;-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="WaveView">-->
+    <!--        <attr name="waveWaterLevel" format="float" />-->
+    <!--        <attr name="amplitudeRatio" format="float" />-->
+    <!--        <attr name="waveLengthRatio" format="float" />-->
+    <!--        <attr name="waveShiftRatio" format="float" />-->
+    <!--        <attr name="frontWaveColor" format="color" />-->
+    <!--        <attr name="behindWaveColor" format="color" />-->
+    <!--        <attr name="waveShape1" format="enum">-->
+    <!--            <enum name="circle" value="0" />-->
+    <!--            <enum name="square" value="1" />-->
+    <!--        </attr>-->
+    <!--        <attr name="showWave" format="boolean" />-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="SwitchView">-->
+    <!--        <attr name="tempureText" format="dimension" />-->
+    <!--        <attr name="tempureType" format="enum">-->
+    <!--            <enum name="celsius" value="0" />-->
+    <!--            <enum name="fahrenheit" value="1" />-->
+    <!--        </attr>-->
+
+    <!--        &lt;!&ndash;        <attr name="left_img" format="reference" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="left_textColor" format="color" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="left_visibity" format="boolean" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="title_text" format="string" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="title_textColor" format="color" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="title_textSize" format="dimension" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="tempureText" format="boolean" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="right_visible" format="boolean" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="right_img" format="reference" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="right_text" format="string" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="right_textColor" format="color" />&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <attr name="default_finish" format="boolean" />&ndash;&gt;-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="SettingTextView">-->
+    <!--        <attr name="itemStr" format="string" />-->
+    <!--        <attr name="itemContentStr" format="string" />-->
+    <!--        <attr name="countStart" format="float" />-->
+    <!--        <attr name="countEnd" format="float" />-->
+    <!--        <attr name="showIcon" format="boolean" />-->
+    <!--        <attr name="command" format="string" />-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="StatusView">-->
+    <!--        <attr name="content_text" format="string" />-->
+    <!--        <attr name="content_textSize" format="dimension" />-->
+    <!--        <attr name="content_textColor" format="color" />-->
+    <!--        <attr name="content_textLines" format="integer" />-->
+    <!--        <attr name="layout_gravity" format="dimension">-->
+    <!--            <enum name="center" value="0" />-->
+    <!--            <enum name="start" value="1" />-->
+    <!--            <enum name="end" value="2" />-->
+    <!--        </attr>-->
+    <!--        <attr name="icon_img" format="reference" />-->
+    <!--    </declare-styleable>-->
+
+
+    <!--    <declare-styleable name="LevelImage">-->
+    <!--        <attr name="str" format="string" />-->
+    <!--        <attr name="img" format="reference" />-->
+    <!--        <attr name="c_text" format="string" />-->
+    <!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="TopicImg">-->
+    <!--        <attr name="show_mode" format="enum">-->
+    <!--            <enum name="useLocal" value="0" />-->
+    <!--            <enum name="useServer" value="1" />-->
+    <!--        </attr>-->
+    <!--    </declare-styleable>-->
+
+
+    <!--    &lt;!&ndash;可伸展的布局&ndash;&gt;-->
+    <!--    <declare-styleable name="ExpandableLayout">-->
+    <!--        &lt;!&ndash;动画持续的时间，默认是300ms&ndash;&gt;-->
+    <!--        <attr name="el_duration" format="integer" />-->
+    <!--        &lt;!&ndash;是否是展开的，默认是false&ndash;&gt;-->
+    <!--        <attr name="el_expanded" format="boolean" />-->
+    <!--        &lt;!&ndash;视差效果，默认是1&ndash;&gt;-->
+    <!--        <attr name="el_parallax" format="float" />-->
+    <!--        &lt;!&ndash;对齐方式，默认是VERTICAL，垂直&ndash;&gt;-->
+    <!--        <attr name="android:orientation" />-->
+    <!--    </declare-styleable>-->
+
+    <declare-styleable name="TitleBar">
+        <attr name="left_img" format="reference" />
+        <attr name="left_gone" format="boolean" />
+        <attr name="title_text" format="string" />
+        <attr name="title_textColor" format="color" />
+        <attr name="title_textSize" format="dimension" />
+        <attr name="title_gone" format="boolean" />
+        <attr name="right_gone" format="boolean" />
+        <attr name="right_img" format="reference" />
+        <attr name="default_finish" format="boolean" />
+    </declare-styleable>
+
+</resources>

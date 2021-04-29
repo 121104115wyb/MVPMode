@@ -29,10 +29,14 @@ public class HomeAdapter extends BaseViewBindingAdapter<TopicResponse.ContentLis
         super(R.layout.adapter_home_post_item_view);
     }
 
+    //添加子View点击事件
+    public void addChildClickListener() {
+        addChildClickViewIds(R.id.headImg, R.id.image1, R.id.image2);
+    }
+
     @Override
     protected HomeAdapterHolder getViewBinding(int viewType, LayoutInflater from, ViewGroup parent) {
         return new HomeAdapterHolder(AdapterHomePostItemViewBinding.inflate(from, parent, false));
-
     }
 
     @Override
@@ -46,16 +50,18 @@ public class HomeAdapter extends BaseViewBindingAdapter<TopicResponse.ContentLis
 
         ImageLoadUtils.load(getContext(), contentListBean.getUserImage(), holder.headImg());
         if (TextUtils.isEmpty(contentListBean.getPostImg1())) {
-            holder.postImg1().setVisibility(View.INVISIBLE);
+            holder.postImg1().setVisibility(View.GONE);
         } else {
             ImageLoadUtils.load(getContext(), contentListBean.getPostImg1(), holder.postImg1());
             holder.postImg1().setVisibility(View.VISIBLE);
         }
-        if (holder.postImg1().getVisibility() != View.INVISIBLE) {
+        if (holder.postImg1().getVisibility() == View.GONE) {
+            holder.postImg2().setVisibility(View.GONE);
+            holder.postImg3().setVisibility(View.GONE);
+        } else {
             if (TextUtils.isEmpty(contentListBean.getPostImg2())) {
                 holder.postImg2().setVisibility(View.INVISIBLE);
             } else {
-
                 ImageLoadUtils.load(getContext(), contentListBean.getPostImg2(), holder.postImg2());
             }
             if (TextUtils.isEmpty(contentListBean.getPostImg3())) {

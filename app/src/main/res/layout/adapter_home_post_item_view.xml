@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/middle_layout_margin_default"
+    app:cardBackgroundColor="@color/layout_bg"
+    app:cardCornerRadius="@dimen/layout_corner_default"
+    app:cardElevation="@dimen/layout_elevation_default">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/headImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/min_layout_margin_default"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nickName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_title_color"
+            android:textSize="@dimen/title_text_default"
+            android:paddingEnd="0dp"
+            android:paddingStart="@dimen/middle_padding_default"
+            app:layout_constraintBottom_toBottomOf="@id/headImg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/headImg"
+            app:layout_constraintTop_toTopOf="@id/headImg" />
+
+        <TextView
+            android:id="@+id/postContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/middle_padding_default"
+            android:textSize="@dimen/content_text_default"
+            app:layout_constraintStart_toStartOf="@id/headImg"
+            app:layout_constraintTop_toBottomOf="@id/headImg" />
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/min_layout_margin_default"
+            android:layout_marginTop="@dimen/min_layout_margin_default"
+            app:layout_constraintEnd_toStartOf="@id/image2"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@id/headImg"
+            app:layout_constraintTop_toBottomOf="@id/postContent" />
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/min_layout_margin_default"
+            app:layout_constraintEnd_toStartOf="@id/image3"
+            app:layout_constraintStart_toEndOf="@id/image1"
+            app:layout_constraintTop_toBottomOf="@id/postContent" />
+
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/min_layout_margin_default"
+            android:layout_marginEnd="@dimen/max_layout_margin_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image2"
+            app:layout_constraintTop_toBottomOf="@id/postContent" />
+
+        <TextView
+            android:id="@+id/topicText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/min_padding_default"
+            android:paddingBottom="@dimen/min_padding_default"
+            android:text="sfdsdfsdf"
+            android:textColor="@color/text_color_56c"
+            android:textSize="@dimen/content_text_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/headImg"
+            app:layout_constraintTop_toBottomOf="@id/image1" />
+
+        <TextView
+            android:gravity="center|start"
+            android:id="@+id/viewCounts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_layout_margin_default"
+            android:text="sdfsdfsdfsdf"
+            android:textSize="@dimen/content_text_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/replyCounts"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topicText" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/replyCounts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_layout_margin_default"
+            android:text="sdfsdfsdfsdf"
+            android:textSize="@dimen/content_text_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/likeCounts"
+            app:layout_constraintStart_toEndOf="@id/viewCounts"
+            app:layout_constraintTop_toBottomOf="@id/topicText" />
+
+        <TextView
+            android:gravity="center|end"
+            android:id="@+id/likeCounts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/min_layout_margin_default"
+            android:text="sdfsdfsdfsdf"
+            android:textSize="@dimen/content_text_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/replyCounts"
+            app:layout_constraintTop_toBottomOf="@id/topicText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

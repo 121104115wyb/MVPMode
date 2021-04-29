@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="min_layout_margin_default">8dp</dimen>
+    <dimen name="middle_layout_margin_default">12dp</dimen>
+    <dimen name="max_layout_margin_default">16dp</dimen>
+    <dimen name="min_padding_default">4dp</dimen>
+    <dimen name="middle_padding_default">8dp</dimen>
+    <dimen name="max_padding_default">16dp</dimen>
+    <dimen name="btn_height_default">40dp</dimen>
+    <dimen name="btn_corner_default">20dp</dimen>
+    <dimen name="btn_solid_default">0.5dp</dimen>
+    <dimen name="icon_height_default">30dp</dimen>
+    <dimen name="icon_width_default">30dp</dimen>
+    <dimen name="icon_padding_default">8dp</dimen>
+    <dimen name="dialog_common_height">200dp</dimen>
+    <dimen name="min_layout_place_default">24dp</dimen>
+    <dimen name="small_layout_place_default">32dp</dimen>
+    <dimen name="middle_layout_place_default">40dp</dimen>
+    <dimen name="lager_layout_place_default">48dp</dimen>
+    <dimen name="xLager_layout_place_default">56dp</dimen>
+    <dimen name="xxLager_layout_place_default">64dp</dimen>
+    <dimen name="max_layout_place_default">72dp</dimen>
+    <dimen name="layout_elevation_default">8dp</dimen>
+    <dimen name="layout_corner_default">8dp</dimen>
+
+    <dimen name="divider_line_default">0.5dp</dimen>
+
+    <dimen name="max_title_text_default">20sp</dimen>
+    <dimen name="lager_title_text_default">18sp</dimen>
+    <dimen name="title_text_default">16sp</dimen>
+    <dimen name="content_text_default">14sp</dimen>
+    <dimen name="small_text_default">12sp</dimen>
+    <dimen name="min_text_default">10sp</dimen>
+
+</resources>

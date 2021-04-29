@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+1.APP改用https请求
+2.targetSdkVersion 降到27以下
+# android 9P 适配http
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+
+    <!--如果有第三方的http接口请求-->
+    <!--<network-security-config>-->
+    <!--<domain-config cleartextTrafficPermitted="true">-->
+    <!--&lt;!&ndash;接口地址不要加 http:// 前缀，如果是 ip 地址，还不能加端口号。&ndash;&gt;-->
+    <!--<domain includeSubdomains="true">你的服务端接口地址</domain>-->
+    <!--<domain includeSubdomains="true">第三方接口路径</domain>-->
+    <!--</domain-config>-->
+    <!--</network-security-config>-->
