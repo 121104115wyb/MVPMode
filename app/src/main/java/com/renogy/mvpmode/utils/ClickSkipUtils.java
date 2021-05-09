@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.renogy.mvpmode.R;
+import com.renogy.mvpmode.ui.agentweb.activity.OpenLinkActivity;
 
 /**
  * @author Create by 17474 on 2021/4/28.
@@ -41,9 +43,12 @@ public class ClickSkipUtils {
     /**
      * 打开内部的浏览器
      */
-    public static void openInnerBrowser() {
-
-
+    public static void openInnerBrowser(String url) {
+        if (TextUtils.isEmpty(url)) {
+            ToastUtils.showLong("url is empty");
+        } else {
+            OpenLinkActivity.startLinkActivity(url);
+        }
     }
 
 }

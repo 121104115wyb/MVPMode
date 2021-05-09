@@ -1,6 +1,8 @@
 package com.renogy.mvpmode.data.server;
 
+import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.data.bean.main.BannerBean;
+import com.renogy.mvpmode.data.bean.personal.PersonalMainBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 public class LocalData {
 
     private final static BannerBean bannerBean = new BannerBean();
-
+    private final static List<PersonalMainBean> mainBeanList = new ArrayList<>();
     static {
         List<BannerBean.Banner> bannerList = new ArrayList<>();
         bannerList.add(new BannerBean.Banner(
@@ -29,10 +31,22 @@ public class LocalData {
                 "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.tapimg.com%2Fbbcode%2Fimages%2F1ba41d05c914075d3e7d1bab92d7d6b4.png&refer=http%3A%2F%2Fimg2.tapimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621910072&t=6b97413ec9fc2accc06ad1ffd1a5647c"
                 , "哇，美女啊", "https://baijiahao.baidu.com/s?id=1697913555458708690&wfr=spider&for=pc"));
         bannerBean.setBannerList(bannerList);
+
+
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_add,R.string.personal_setting_test1,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_bianji,R.string.personal_setting_test2,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_browse,R.string.personal_setting_test3,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_close,R.string.personal_setting_test4,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_delete,R.string.personal_setting_test5,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_good,R.string.personal_setting_test6,R.drawable.ic_right));
+        mainBeanList.add(PersonalMainBean.of(R.drawable.ic_exit,R.string.personal_setting_exit,R.drawable.ic_right));
     }
 
     public static BannerBean loadBanner() {
         return bannerBean;
     }
 
+    public static List<PersonalMainBean> getMainBeanList() {
+        return mainBeanList;
+    }
 }

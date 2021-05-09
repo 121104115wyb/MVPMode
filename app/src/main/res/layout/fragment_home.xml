@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_33"
+    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.renogy.mvpmode.widget.TitleBar
@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:left_img="@drawable/icon_back"
+        app:right_img="@drawable/ic_add"
         app:title_text="@string/text_nav_home" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -43,6 +44,11 @@
                     app:banner_aspectRatio="2.5"
                     app:banner_isNeedShowIndicatorOnOnlyOnePage="false"
                     app:banner_pageChangeDuration="2500"
+                    app:banner_isNumberIndicator="true"
+                    app:banner_indicatorGravity="right"
+                    app:banner_numberIndicatorTextSize="@dimen/sp_14"
+                    app:banner_numberIndicatorBackground="@color/nav_ripper"
+                    app:banner_numberIndicatorTextColor="@color/text_color_56c"
                     app:banner_placeholderDrawable="@drawable/hanxin"
                     app:banner_pointAutoPlayAble="true"
                     app:banner_pointAutoPlayInterval="5000"

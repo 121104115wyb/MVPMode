@@ -3,7 +3,6 @@ package com.renogy.mvpmode.data.api;
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.data.bean.login.LoginData;
 import com.renogy.mvpmode.data.bean.login.LoginRequest;
-import com.renogy.mvpmode.data.bean.main.BannerBean;
 import com.renogy.mvpmode.data.bean.main.TopicResponse;
 
 import java.util.Map;
@@ -59,8 +58,4 @@ public class MVPApiImpl implements MVPApi {
         return getApi().loadPostList(pageNum, size, map);
     }
 
-    @Override
-    public Observable<BaseResponse<BannerBean>> loadBanner() {
-        return getApi().loadBanner();
-    }
 }

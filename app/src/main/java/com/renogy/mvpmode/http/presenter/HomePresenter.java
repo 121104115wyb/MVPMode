@@ -5,7 +5,6 @@ import com.renogy.mvpmode.base.presenter.RxPresenter;
 import com.renogy.mvpmode.data.api.ApiCase;
 import com.renogy.mvpmode.data.bean.main.BannerBean;
 import com.renogy.mvpmode.data.bean.main.TopicResponse;
-import com.renogy.mvpmode.data.server.LocalData;
 import com.renogy.mvpmode.http.observe.RxObserver;
 import com.trello.rxlifecycle4.components.support.RxFragment;
 
@@ -32,11 +31,11 @@ public class HomePresenter extends RxPresenter<HomePresenter.MainPresenterView> 
         ApiCase.getInstance().loadBanner().compose(getLifecycleTransformer()).subscribe(new RxObserver<BannerBean>(mView) {
             @Override
             public void onRxSuccess(BannerBean response) {
-                mView.loadBannerSuccess(LocalData.loadBanner());
+                mView.loadBannerSuccess(response);
             }
 
             @Override
-            public void onRxError( ) {
+            public void onRxError() {
 
             }
         });

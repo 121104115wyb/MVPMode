@@ -3,16 +3,12 @@ package com.renogy.mvpmode.data.api;
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.data.bean.login.LoginData;
 import com.renogy.mvpmode.data.bean.login.LoginRequest;
-import com.renogy.mvpmode.data.bean.main.BannerBean;
 import com.renogy.mvpmode.data.bean.main.TopicResponse;
 
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -44,13 +40,6 @@ public interface MVPApi {
     @GET("api/v1/community/get_post_list/{pageNum}/{size}")
     Observable<BaseResponse<TopicResponse>> loadPostList(@Path("pageNum") String pageNum, @Path("size") String size, @QueryMap Map<String, String> map);
 
-
-    /**
-     * 模拟网络获取banner
-     *
-     * @return banner 广告列表
-     */
-    Observable<BaseResponse<BannerBean>> loadBanner();
 
 
 }

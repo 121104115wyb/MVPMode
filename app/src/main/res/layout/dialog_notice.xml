@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_notice_bg">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TitleText"
+        android:layout_margin="@dimen/min_layout_margin_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/content"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/max_layout_margin_default"
+        android:layout_marginBottom="@dimen/max_layout_margin_default"
+        android:minHeight="120dp"
+        android:padding="@dimen/max_padding_default"
+        android:text=""
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_cancel_select"
+        android:gravity="center"
+        android:text="@string/dialog_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/confirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+
+    <TextView
+        android:id="@+id/confirm"
+        style="@style/ContentText"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@drawable/dialog_confirm_select"
+        android:gravity="center"
+        android:text="@string/dialog_confirm"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancel"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

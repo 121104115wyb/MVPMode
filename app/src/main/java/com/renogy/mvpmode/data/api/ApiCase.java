@@ -4,6 +4,7 @@ import com.renogy.mvpmode.data.bean.login.LoginData;
 import com.renogy.mvpmode.data.bean.login.LoginRequest;
 import com.renogy.mvpmode.data.bean.main.BannerBean;
 import com.renogy.mvpmode.data.bean.main.TopicResponse;
+import com.renogy.mvpmode.data.server.LocalData;
 import com.renogy.mvpmode.utils.RxUtils;
 
 import java.util.Map;
@@ -43,11 +44,8 @@ public class ApiCase {
                 .compose(RxUtils.handleResult());
     }
 
-    //模拟获取banner 列表
-    public <T> Observable<BannerBean> loadBanner() {
-        return API_IMPL.loadBanner()
-                .compose(RxUtils.rxSchedulerHelper())
-                .compose(RxUtils.handleResult());
+    public Observable<BannerBean> loadBanner() {
+        return Observable.just(LocalData.loadBanner());
     }
 
 }

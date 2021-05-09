@@ -11,11 +11,13 @@
     <color name="black_33">#D7D6D6</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_half_15">#26000000</color>
+    <color name="toast_view_color">#F8F6F6</color>
 
-
+    <color name="web_progress_color">#56CCF2</color>
     <color name="nav_select">#00BCD4</color>
     <color name="nav_unSelect">#8B8989</color>
-
+    <color name="dialog_notice_bg">#F1F0F0</color>
+    <color name="dialog_notice_stroke">#8004C7F8</color>
     <color name="nav_ripper">#338B8989</color>
     <color name="item_color">#242A37</color>
     <color name="tips_color">#262222</color>
@@ -33,6 +35,6 @@
     <color name="text_color_FFF">#FFFF1E7F</color>
 
 
-
-
+    <color name="cancel_select">#BFBEBF</color>
+    <color name="confirm_select">#4D56CCF2</color>
 </resources>

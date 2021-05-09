@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_network_error" />
+
+        <TextView
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/max_layout_margin_default"
+            android:text="@string/something_wrong_with_your_network" />
+
+        <TextView
+            android:id="@+id/web_reload"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawablePadding="@dimen/min_padding_default"
+            android:gravity="center"
+            android:text="@string/text_reload"
+            android:textColor="@color/text_color_56c"
+            android:textSize="@dimen/title_text_default"
+            app:drawableStartCompat="@drawable/ic_reload" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="@dimen/middle_padding_default"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/reload_bottom_line" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

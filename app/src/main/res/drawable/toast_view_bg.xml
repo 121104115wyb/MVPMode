@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="12dp" />
+    <solid android:color="@color/toast_view_color" />
+    <padding
+        android:left="@dimen/max_padding_default"
+        android:right="@dimen/max_padding_default"
+        android:top="@dimen/max_padding_default" />
+</shape>

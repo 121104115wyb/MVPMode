@@ -17,10 +17,7 @@ import com.renogy.mvpmode.utils.RxUtils;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DefaultObserver;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 /**
@@ -37,8 +34,8 @@ public abstract class BaseActivity<T extends BasePresenter, VB extends ViewBindi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BarUtils.setNavBarVisibility(this, false);
-        BarUtils.setStatusBarVisibility(this, false);
+        BarUtils.setNavBarLightMode(this,true);
+        BarUtils.setStatusBarLightMode(this,true);
         mPresenter = getMPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
@@ -101,7 +98,7 @@ public abstract class BaseActivity<T extends BasePresenter, VB extends ViewBindi
 
     @Override
     public void showSnackBar(String msg) {
-        SnackbarUtils.with(bindView.snackView).setMessage("哈哈哈哈哈哈").show();
+        SnackbarUtils.with(bindView.snackView).setMessage(msg).show();
     }
 
     protected void initParams(Bundle bundle) {

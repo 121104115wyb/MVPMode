@@ -1,5 +1,6 @@
 package com.renogy.mvpmode.ui.splash;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.activity.BaseActivity;
 import com.renogy.mvpmode.base.presenter.BasePresenter;
@@ -7,7 +8,6 @@ import com.renogy.mvpmode.common.AppHelper;
 import com.renogy.mvpmode.databinding.ActivityGuide1Binding;
 import com.renogy.mvpmode.ui.login.LoginActivity;
 import com.renogy.mvpmode.ui.main.MainActivity;
-import com.renogy.mvpmode.ui.main.fragment.MainFragment;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +41,8 @@ public class Guide1Activity extends BaseActivity<BasePresenter, ActivityGuide1Bi
 
     @Override
     protected void onViewCreate() {
+        BarUtils.setStatusBarVisibility(this,false);
+        BarUtils.setNavBarVisibility(this,false);
         if (!AppHelper.getInstance().loginState()) {
             startActivity1(LoginActivity.class);
             finish();

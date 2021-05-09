@@ -2,16 +2,41 @@
     <string name="app_name">MVPMode</string>
 
     <!--common toast-->
-    <string name="network_no_connect">请检查您的网络未连接！</string>
+    <string name="network_no_connect">请检查您的网络连接！</string>
 
     <string name="text_no_browser">没有浏览器</string>
     <string name="text_select_browser">请选择浏览器</string>
+
+
+    <string name="tx_permission">Permission has been denied by you</string>
+    <string name="tx_permission_if">If you can not use this function without permission, click OK to open the Geolocation permission</string>
+    <string name="tx_permission_delay">Geolocation permissions need to be obtained.Otherwise, you will not be able to use the Bluetooth function</string>
+
+
+    <!--common dialog-->
+    <string name="dialog_cancel">取 消</string>
+    <string name="dialog_confirm">确 认</string>
 
 
     <string name="text_nav_home">主 页</string>
     <string name="text_nav_message">消 息</string>
     <string name="text_nav_music">音 乐</string>
     <string name="text_nav_person">个人中心</string>
+    <string name="btn_text_change_show_img_type">改变浏览图片方式</string>
+    <string name="btn_text_take_photo">拍 照</string>
+    <string name="btn_text_select_alume">选择图片</string>
+    <string name="btn_text_request_location">请求定位权限</string>
+
+    <string name="personal_setting_test1">手机信息测试</string>
+    <string name="personal_setting_test2">测试拍照</string>
+    <string name="personal_setting_test3">测试通知栏</string>
+    <string name="personal_setting_test4">测试4</string>
+    <string name="personal_setting_test5">测试5</string>
+    <string name="personal_setting_test6">测试6</string>
+    <string name="personal_setting_exit">退出</string>
+    <string name="text_provider_authorities">com.renogy.mvpmode.photo.provider</string>
+    <string name="something_wrong_with_your_network">something wrong with your network</string>
+    <string name="text_reload">Reload</string>
 
 
 </resources>

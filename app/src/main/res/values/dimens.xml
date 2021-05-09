@@ -6,6 +6,8 @@
     <dimen name="min_padding_default">4dp</dimen>
     <dimen name="middle_padding_default">8dp</dimen>
     <dimen name="max_padding_default">16dp</dimen>
+    <dimen name="layout_height_default">50dp</dimen>
+
     <dimen name="btn_height_default">40dp</dimen>
     <dimen name="btn_corner_default">20dp</dimen>
     <dimen name="btn_solid_default">0.5dp</dimen>

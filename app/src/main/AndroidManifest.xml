@@ -5,6 +5,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
 
     <application
         android:name=".MVPApp"
@@ -12,22 +25,28 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MVPMode">
+
         <activity android:name=".ui.splash.Guide1Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--        <activity android:name=".ui.splash.GuideActivity">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
-
-        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
+        </activity> <!-- <activity android:name=".ui.splash.GuideActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <activity
+            android:name=".ui.personal.PhoneInfoActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
@@ -38,6 +57,31 @@
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.post.NewPostActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.agentweb.activity.OpenLinkActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.personal.NotificationActivity"
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.renogy.mvpmode.photo.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 </manifest>

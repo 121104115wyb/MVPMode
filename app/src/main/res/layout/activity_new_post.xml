@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.post.NewPostActivity">
+    <Button
+        android:id="@+id/changeType"
+        style="@style/commonBtnStyle"
+        android:layout_margin="@dimen/middle_layout_margin_default"
+        android:text="@string/btn_text_change_show_img_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/takePhoto"
+        style="@style/commonBtnStyle"
+        android:layout_margin="@dimen/middle_layout_margin_default"
+        android:text="@string/btn_text_take_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeType" />
+
+    <Button
+        android:id="@+id/selectMedia"
+        style="@style/commonBtnStyle"
+        android:layout_margin="@dimen/middle_layout_margin_default"
+        android:text="@string/btn_text_select_alume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/takePhoto" />
+
+    <Button
+        android:id="@+id/requestLocation"
+        style="@style/commonBtnStyle"
+        android:layout_margin="@dimen/middle_layout_margin_default"
+        android:text="@string/btn_text_request_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectMedia" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/selectRev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/max_layout_margin_default"
+        app:layout_constraintTop_toBottomOf="@id/requestLocation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,12 @@
 package com.renogy.mvpmode;
 
-import android.content.Context;
-
 import androidx.multidex.MultiDexApplication;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.renogy.mvpmode.common.AppConstants;
 import com.renogy.mvpmode.data.api.ServiceHelper;
 import com.renogy.mvpmode.utils.MkvEditorUtils;
+import com.renogy.mvpmode.widget.notification.NotificationHelper;
 
 import org.litepal.LitePal;
 
@@ -177,5 +176,7 @@ public class MVPApp extends MultiDexApplication {
         LogUtils.getConfig().setBorderSwitch(true).setLogSwitch(true).setGlobalTag(AppConstants.APP_DEFAULT_LOG);
         //轻量化存储
         MkvEditorUtils.getInstance().init();
+
+        NotificationHelper.getInstance().init();
     }
 }

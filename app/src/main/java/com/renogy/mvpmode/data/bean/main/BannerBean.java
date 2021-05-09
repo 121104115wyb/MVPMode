@@ -1,5 +1,6 @@
 package com.renogy.mvpmode.data.bean.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,15 @@ public class BannerBean {
 
     public List<Banner> getBannerList() {
         return bannerList;
+    }
+
+    public List<String> getTipList() {
+        if (bannerList == null) return null;
+        List<String> tips = new ArrayList<>(bannerList.size());
+        for (Banner banner : bannerList) {
+            tips.add(banner.getTips());
+        }
+        return tips;
     }
 
     public void setBannerList(List<Banner> bannerList) {

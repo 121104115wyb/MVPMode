@@ -1,14 +1,14 @@
 package com.renogy.mvpmode.ui.main.fragment;
 
 import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.NotificationUtils;
 import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.fragment.BaseFragment;
-import com.renogy.mvpmode.base.presenter.BasePresenter;
 import com.renogy.mvpmode.common.AppConstants;
 import com.renogy.mvpmode.common.AppRequestHelper;
 import com.renogy.mvpmode.data.bean.main.BannerBean;
@@ -16,7 +16,8 @@ import com.renogy.mvpmode.data.bean.main.TopicResponse;
 import com.renogy.mvpmode.databinding.FragmentHomeBinding;
 import com.renogy.mvpmode.http.presenter.HomePresenter;
 import com.renogy.mvpmode.ui.main.adapter.HomeAdapter;
-import com.renogy.mvpmode.widget.TitleBar;
+import com.renogy.mvpmode.utils.ClickSkipUtils;
+import com.renogy.mvpmode.utils.ImageLoadUtils;
 
 import java.util.List;
 
@@ -55,22 +56,38 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
 
     @Override
     protected void onViewCreate() {
+
+        boolean areNotificationsEnabled = NotificationUtils.areNotificationsEnabled();
+        LogUtils.eTag("test", "通知 是否允许：" + areNotificationsEnabled);
+
+//        BarUtils.setStatusBarColor(getActivity(),getResources().getColor(R.color.black_33));
         Log.d(TAG, "onViewCreate: ---HomeFragment----");
         homeAdapter = new HomeAdapter();
         homeAdapter.setAnimationEnable(true);
         homeAdapter.addChildClickListener();
         _viewBing.homeRev.setLayoutManager(new LinearLayoutManager(getContext()));
         _viewBing.homeRev.setAdapter(homeAdapter);
+        //设置加载方式
+        _viewBing.homeBanner.setAdapter((BGABanner.Adapter<ImageView, BannerBean.Banner>) (banner, itemView, model, position) -> {
+            ImageLoadUtils.load(getActivity(), model.getUrl(), itemView);
+        });
+
+        //设置点击事件
+        _viewBing.homeBanner.setDelegate((BGABanner.Delegate<ImageView, BannerBean.Banner>) (banner, itemView, model, position) -> {
+            if (position > 1) {
+                ClickSkipUtils.openInnerBrowser(model.getSkipUrl());
+            } else {
+                ClickSkipUtils.openBrowser(getContext(), model.getSkipUrl());
+            }
+        });
 
         //下拉刷新
         _viewBing.homeSmRef.setOnRefreshListener(v -> loadPost());
         //上拉加载
         _viewBing.homeSmRef.setOnLoadMoreListener(v -> loadMorePost());
-        //banner 点击事件
-        _viewBing.homeBanner.setDelegate((banner, itemView, model, position) -> {
-
-        });
         _viewBing.homeFragmentTitleBar.setLeftClick(view -> getActivity().finish());
+        _viewBing.homeFragmentTitleBar.setRightClick(v -> showToast("点击了添加按钮"));
+        mPresenter.loadBanner();
     }
 
 
@@ -113,7 +130,9 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
      */
     @Override
     public void loadBannerSuccess(BannerBean banner) {
-
+        if (banner == null || banner.getBannerList() == null) return;
+        _viewBing.homeBanner.setAutoPlayAble(banner.getBannerList().size() > 1);
+        _viewBing.homeBanner.setData(banner.getBannerList(), banner.getTipList());
     }
 
     /**
