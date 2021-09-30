@@ -1,13 +1,11 @@
 package com.renogy.mvpmode.base.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.ActivityUtils;
-import com.renogy.mvpmode.utils.LanguageUtils;
 import com.trello.rxlifecycle4.components.support.RxFragment;
 
 /**
@@ -19,7 +17,6 @@ public abstract class AbstractBaseFragment extends RxFragment {
 
     //日志输出标志
     protected static final String TAG = "AbstractBaseFragment";
-
 
     protected static void startActivity1(final Class<? extends Activity> clz) {
         ActivityUtils.startActivity(Bundle.EMPTY, clz);
@@ -37,13 +34,10 @@ public abstract class AbstractBaseFragment extends RxFragment {
         ActivityUtils.startActivity(options, clz);
     }
 
-    //绑定布局id
-    protected abstract int getLayoutId();
 
     //视图创建
     protected abstract void onViewCreate();
-
     //初始化数据
-    protected abstract void initData();
+    protected abstract void fetchData();
 
 }

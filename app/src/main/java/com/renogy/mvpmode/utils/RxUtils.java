@@ -1,11 +1,9 @@
 package com.renogy.mvpmode.utils;
 
-import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.response.BaseResponse;
 import com.renogy.mvpmode.data.exception.RxException;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.FlowableTransformer;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableSource;
@@ -38,15 +36,9 @@ public class RxUtils {
      * @param <T> 指定的泛型类型
      * @return ObservableTransformer
      */
-    public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {
-        return new ObservableTransformer<T, T>() {
-            @NonNull
-            @Override
-            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
-        };
+    public static <T> ObservableTransformer<T, T> rxIoSchedulerHelper() {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**
@@ -69,9 +61,37 @@ public class RxUtils {
     public static <T> ObservableTransformer<BaseResponse<T>, T> handleResult() {
         return upstream -> upstream.flatMap((Function<BaseResponse<T>, ObservableSource<T>>) tBaseResponse ->
                 BaseResponse.CODE_OK.equals(tBaseResponse.getCode())
-                && tBaseResponse.getData() != null
-                ? createData(tBaseResponse.getData())
-                : Observable.error(new RxException(tBaseResponse)));
+                        && tBaseResponse.getData() != null
+                        ? createData(tBaseResponse.getData())
+                        : Observable.error(new RxException(tBaseResponse)));
+    }
+
+    /**
+     * 统一返回结果处理
+     *
+     * @param <T> 指定的泛型类型
+     * @return ObservableTransformer
+     */
+    public static <T> ObservableTransformer<BaseResponse<T>, T> handleResultWithIoScheduler() {
+        return upstream -> upstream.flatMap((Function<BaseResponse<T>, ObservableSource<T>>) tBaseResponse ->
+                BaseResponse.CODE_OK.equals(tBaseResponse.getCode())
+                        && tBaseResponse.getData() != null
+                        ? createData(tBaseResponse.getData())
+                        : Observable.error(new RxException(tBaseResponse))).compose(rxIoSchedulerHelper());
+    }
+
+    /**
+     * 统一返回结果处理
+     *
+     * @param <T> 指定的泛型类型
+     * @return ObservableTransformer
+     */
+    public static <T> ObservableTransformer<BaseResponse<T>, T> handleResultWithSingleScheduler() {
+        return upstream -> upstream.flatMap((Function<BaseResponse<T>, ObservableSource<T>>) tBaseResponse ->
+                BaseResponse.CODE_OK.equals(tBaseResponse.getCode())
+                        && tBaseResponse.getData() != null
+                        ? createData(tBaseResponse.getData())
+                        : Observable.error(new RxException(tBaseResponse))).compose(rxSingleSchedulerHelper());
     }
 
     /**

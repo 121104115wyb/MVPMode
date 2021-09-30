@@ -40,7 +40,6 @@ public abstract class BaseFragment<T extends BasePresenter, VB extends ViewBindi
         bindView = FragmentBaseBinding.inflate(inflater, container, false);
         _viewBing = getViewBinding();
         onViewCreate();
-        initData();
         return bindView.getRoot();
     }
 

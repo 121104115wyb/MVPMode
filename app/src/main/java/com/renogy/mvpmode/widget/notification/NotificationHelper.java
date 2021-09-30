@@ -10,11 +10,8 @@ import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-import androidx.core.app.NotificationCompat;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NotificationUtils;
-import com.blankj.utilcode.util.Utils;
 import com.renogy.mvpmode.MVPApp;
 import com.renogy.mvpmode.R;
 
@@ -35,7 +32,7 @@ import static com.blankj.utilcode.util.NotificationUtils.IMPORTANCE_MIN;
  * 需要在使用前初始化，我们这里初始化在Application中
  * 1.初始化：
  * NotificationHelper.getInstance().init();
- * 2.使用：
+ * 2.使用：定义符合自己需求的消息
  */
 public class NotificationHelper {
 
@@ -119,22 +116,16 @@ public class NotificationHelper {
 
     public void sendNotification(String title, String content) {
         DEFAULT_NOTIFICATION_ID++;
-        NotificationUtils.notify(DEFAULT_NOTIFICATION_ID, NOTIFICATION_CHANNEL_CONFIG, new Utils.Consumer<NotificationCompat.Builder>() {
-            @Override
-            public void accept(NotificationCompat.Builder builder) {
-                builder.setAutoCancel(true)
-                        .setSmallIcon(R.drawable.icon_home)
-                        .setContentText(content)
-                        .setContentTitle(title)
-                        .setTicker("新消息")
-                        .setShowWhen(true)
-                        .setWhen(System.currentTimeMillis())
-                        .setDefaults(Notification.DEFAULT_ALL | Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
-                        .setPriority(Notification.PRIORITY_HIGH)
-                        .build();
-            }
-        });
-
+        NotificationUtils.notify(DEFAULT_NOTIFICATION_ID, NOTIFICATION_CHANNEL_CONFIG, builder -> builder.setAutoCancel(true)
+                .setSmallIcon(R.drawable.icon_home)
+                .setContentText(content)
+                .setContentTitle(title)
+                .setTicker("新消息")
+                .setShowWhen(true)
+                .setWhen(System.currentTimeMillis())
+                .setDefaults(Notification.DEFAULT_ALL | Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .build());
         if (showNoticeToast) {
             new NoticeToast.NoticeToastBuilder()
                     .setContent(content)
@@ -146,12 +137,7 @@ public class NotificationHelper {
 
     public void sendSystem(String title, String content) {
         DEFAULT_NOTIFICATION_ID++;
-        NotificationUtils.notify(DEFAULT_NOTIFICATION_ID, SYSTEM_CHANNEL_CONFIG, new Utils.Consumer<NotificationCompat.Builder>() {
-            @Override
-            public void accept(NotificationCompat.Builder builder) {
-                builder.setAutoCancel(true).setSmallIcon(R.drawable.icon_home).setContentText(content).setContentTitle(title).build();
-            }
-        });
+        NotificationUtils.notify(DEFAULT_NOTIFICATION_ID, SYSTEM_CHANNEL_CONFIG, builder -> builder.setAutoCancel(true).setSmallIcon(R.drawable.icon_home).setContentText(content).setContentTitle(title).build());
     }
 
     /**

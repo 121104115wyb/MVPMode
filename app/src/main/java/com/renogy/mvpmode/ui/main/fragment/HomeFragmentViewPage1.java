@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.NotificationUtils;
 import com.renogy.mvpmode.R;
-import com.renogy.mvpmode.base.fragment.BaseFragment;
+import com.renogy.mvpmode.base.fragment.CommonLazyLoadFragment;
 import com.renogy.mvpmode.common.AppConstants;
 import com.renogy.mvpmode.common.AppRequestHelper;
 import com.renogy.mvpmode.data.bean.main.BannerBean;
@@ -28,7 +28,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
  * Email： lishuwentimor1994@163.com
  * Describe：主页
  */
-public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBinding> implements HomePresenter.MainPresenterView {
+public class HomeFragmentViewPage1 extends CommonLazyLoadFragment<HomePresenter, FragmentHomeBinding> implements HomePresenter.MainPresenterView {
 
     private int pageNum = 1;
 
@@ -50,13 +50,7 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_home;
-    }
-
-    @Override
     protected void onViewCreate() {
-
         boolean areNotificationsEnabled = NotificationUtils.areNotificationsEnabled();
         LogUtils.eTag("test", "通知 是否允许：" + areNotificationsEnabled);
 
@@ -78,6 +72,19 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
                 ClickSkipUtils.openInnerBrowser(model.getSkipUrl());
             } else {
                 ClickSkipUtils.openBrowser(getContext(), model.getSkipUrl());
+            }
+        });
+
+        homeAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            int id = view.getId();
+            if (R.id.headImg == id) {
+                showSnackBar("点击了头像");
+            } else if (R.id.image1 == id) {
+                showSnackBar("点击了图片1");
+            } else if (R.id.image2 == id) {
+                showSnackBar("点击了图片2");
+            } else {
+
             }
         });
 
@@ -108,19 +115,8 @@ public class HomeFragment extends BaseFragment<HomePresenter, FragmentHomeBindin
     }
 
     @Override
-    protected void initData() {
-        homeAdapter.setOnItemChildClickListener((adapter, view, position) -> {
-            int id = view.getId();
-            if (R.id.headImg == id) {
-                showSnackBar("点击了头像");
-            } else if (R.id.image1 == id) {
-                showSnackBar("点击了图片1");
-            } else if (R.id.image2 == id) {
-                showSnackBar("点击了图片2");
-            } else {
-
-            }
-        });
+    protected void fetchData() {
+        Log.d(TAG, "HomeFragment: fetchData");
     }
 
     /**

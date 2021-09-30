@@ -31,17 +31,15 @@ public class ApiCase {
     }
 
 
-    public <T> Observable<LoginData> login(LoginRequest loginRequest) {
+    public Observable<LoginData> login(LoginRequest loginRequest) {
         return API_IMPL.login(loginRequest)
-                .compose(RxUtils.rxSchedulerHelper())
-                .compose(RxUtils.handleResult());
+                .compose(RxUtils.handleResultWithIoScheduler());
     }
 
     //获取帖子 列表
-    public <T> Observable<TopicResponse> loadPostList(String pageNum, Map<String, String> map) {
+    public Observable<TopicResponse> loadPostList(String pageNum, Map<String, String> map) {
         return API_IMPL.loadPostList(pageNum, String.valueOf(LIST_DEFAULT_COUNT), map)
-                .compose(RxUtils.rxSchedulerHelper())
-                .compose(RxUtils.handleResult());
+                .compose(RxUtils.handleResultWithIoScheduler());
     }
 
     public Observable<BannerBean> loadBanner() {

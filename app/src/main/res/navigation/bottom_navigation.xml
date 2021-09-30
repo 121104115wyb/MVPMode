@@ -6,19 +6,19 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.renogy.mvpmode.ui.main.fragment.HomeFragment"
+        android:name="com.renogy.mvpmode.ui.main.fragment.HomeFragmentViewPage1"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_message"
-        android:name="com.renogy.mvpmode.ui.main.fragment.MessageFragment"
+        android:name="com.renogy.mvpmode.ui.main.fragment.MessageFragmentViewPage1"
         tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/nav_music"
-        android:name="com.renogy.mvpmode.ui.main.fragment.MusicFragment"
+        android:name="com.renogy.mvpmode.ui.main.fragment.MusicFragmentViewPage1"
         tools:layout="@layout/fragment_music" />
     <fragment
         android:id="@+id/nav_person"
-        android:name="com.renogy.mvpmode.ui.main.fragment.MainFragment"
+        android:name="com.renogy.mvpmode.ui.main.fragment.MainFragmentViewPage1"
         tools:layout="@layout/fragment_main" />
 </navigation>

@@ -178,5 +178,7 @@ public class MVPApp extends MultiDexApplication {
         MkvEditorUtils.getInstance().init();
 
         NotificationHelper.getInstance().init();
+        NotificationHelper.getInstance().setShowNoticeToast(true);
+
     }
 }

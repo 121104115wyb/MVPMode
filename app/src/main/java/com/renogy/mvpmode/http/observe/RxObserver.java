@@ -39,8 +39,9 @@ import static com.renogy.mvpmode.common.HttpErrorCode.*;
  */
 public abstract class RxObserver<T> extends ResourceObserver<T> {
 
-    private BaseImpl baseView;
-    private boolean show;
+    private final BaseImpl baseView;
+    private final boolean show;
+
 
     public RxObserver(BaseImpl baseView) {
         this(baseView, true);

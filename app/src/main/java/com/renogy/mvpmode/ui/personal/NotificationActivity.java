@@ -5,6 +5,7 @@ import com.renogy.mvpmode.R;
 import com.renogy.mvpmode.base.activity.BaseActivity;
 import com.renogy.mvpmode.base.presenter.BasePresenter;
 import com.renogy.mvpmode.databinding.ActivityNotificationBinding;
+import com.renogy.mvpmode.utils.RxUtils;
 import com.renogy.mvpmode.widget.notification.NotificationHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -48,36 +49,19 @@ public class NotificationActivity extends BaseActivity<BasePresenter, ActivityNo
     @Override
     protected void initData() {
         viewBinding.delayTimingSend.setOnClickListener(v -> {
-            count1 = 0;
             delaySendMsg();
-
-
         });
         viewBinding.timingSend.setOnClickListener(v -> {
-            count = 0;
             timingSendMsg();
-
-
         });
     }
 
-    private int count = 0;
-    private int count1 = 0;
 
     private void timingSendMsg() {
-        Observable.timer(5L, TimeUnit.SECONDS).subscribe(new DefaultObserver<Long>() {
+        Observable.timer(3L, TimeUnit.SECONDS).compose(RxUtils.rxSingleSchedulerHelper()).subscribe(new DefaultObserver<Long>() {
             @Override
             public void onNext(@NonNull Long aLong) {
-                count++;
-                LogUtils.eTag("send", "timingSendMsg每间隔3s发送一次通知，永远不停止 第 " + count + "次");
-//                NotificationUtils.notify(count, new Utils.Consumer<NotificationCompat.Builder>() {
-//                    @Override
-//                    public void accept(NotificationCompat.Builder builder) {
-//                        builder.setTicker("测试ticker").setContentTitle("ContentTitle").setContentText("ContentText")
-//                                .setOngoing(true).setSmallIcon(R.drawable.icon_home).build();
-//                    }
-//                });
-
+                LogUtils.eTag("send", "timingSendMsg每间隔3s发送一次通知");
                 NotificationHelper.getInstance().sendNotification("测试通知消息","我是德玛西亚之力");
             }
 
@@ -123,19 +107,10 @@ public class NotificationActivity extends BaseActivity<BasePresenter, ActivityNo
 //            }
 //        });
 
-        Observable.timer(5L, TimeUnit.SECONDS).subscribe(new DefaultObserver<Long>() {
+        Observable.timer(3L, TimeUnit.SECONDS).subscribe(new DefaultObserver<Long>() {
             @Override
             public void onNext(@NonNull Long aLong) {
-                count++;
-                LogUtils.eTag("send", "timingSendMsg每间隔3s发送一次通知，永远不停止 第 " + count + "次");
-//                NotificationUtils.notify(count, new Utils.Consumer<NotificationCompat.Builder>() {
-//                    @Override
-//                    public void accept(NotificationCompat.Builder builder) {
-//                        builder.setTicker("测试ticker").setContentTitle("ContentTitle").setContentText("ContentText")
-//                                .setOngoing(true).setSmallIcon(R.drawable.icon_home).build();
-//                    }
-//                });
-
+                LogUtils.eTag("send", "timingSendMsg每间隔3s发送一次通知，永远不停止 第 ");
                 NotificationHelper.getInstance().sendSystem("测试系统消息","我是德玛西亚之力他爷爷");
             }
 
@@ -149,6 +124,5 @@ public class NotificationActivity extends BaseActivity<BasePresenter, ActivityNo
 
             }
         });
-
     }
 }

@@ -1,0 +1,3 @@
+include ':videoCompress'
+include ':app'
+rootProject.name = "MVPMode"

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.blankj.utilcode.util.AppUtils;
-import com.renogy.mvpmode.R;
-import com.renogy.mvpmode.base.fragment.BaseFragment;
+import com.renogy.mvpmode.base.fragment.CommonLazyLoadFragment;
 import com.renogy.mvpmode.base.presenter.BasePresenter;
 import com.renogy.mvpmode.common.AppHelper;
 import com.renogy.mvpmode.data.server.LocalData;
@@ -18,6 +17,7 @@ import com.renogy.mvpmode.ui.personal.NotificationActivity;
 import com.renogy.mvpmode.ui.personal.PersonalAdapter;
 import com.renogy.mvpmode.ui.personal.PhoneInfoActivity;
 import com.renogy.mvpmode.ui.post.NewPostActivity;
+import com.renogy.mvpmode.ui.test.TestViewActivity;
 import com.renogy.mvpmode.utils.XPopUtils;
 
 /**
@@ -25,7 +25,7 @@ import com.renogy.mvpmode.utils.XPopUtils;
  * Email： lishuwentimor1994@163.com
  * Describe：业务主页
  */
-public class MainFragment extends BaseFragment<BasePresenter, FragmentMainBinding> {
+public class MainFragmentViewPage1 extends CommonLazyLoadFragment<BasePresenter, FragmentMainBinding> {
 
 
     private PersonalAdapter personalAdapter;
@@ -45,10 +45,6 @@ public class MainFragment extends BaseFragment<BasePresenter, FragmentMainBindin
         return null;
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_main;
-    }
 
     @Override
     protected void onViewCreate() {
@@ -68,7 +64,10 @@ public class MainFragment extends BaseFragment<BasePresenter, FragmentMainBindin
             } else if (position == 2) {
                 startActivity1(NotificationActivity.class);
 
-            } else if (position == 6) {
+            } else if (position==3){
+                startActivity1(TestViewActivity.class);
+            }
+            else if (position == 6) {
                 XPopUtils.showNotice(mOnClickListener);
             }
         });
@@ -77,8 +76,8 @@ public class MainFragment extends BaseFragment<BasePresenter, FragmentMainBindin
     }
 
     @Override
-    protected void initData() {
-
+    protected void fetchData() {
+        Log.d(TAG, "MainFragment: fetchData");
     }
 
     public NoticeDialog.OnClickListener mOnClickListener = new NoticeDialog.OnClickListener() {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/meinv"
+        android:checked="true"
+        android:icon="@drawable/icon_home"
+        android:title="美女" />
+
+    <item
+        android:id="@+id/add"
+        android:checked="true"
+        android:icon="@drawable/ic_add"
+        android:title="添加" />
+
+    <item
+        android:id="@+id/badBoy"
+        android:checked="true"
+        android:icon="@drawable/icon_person"
+        android:title="渣男" />
+
+    <item
+        android:id="@+id/music"
+        android:checked="true"
+        android:icon="@drawable/icon_music"
+        android:title="主打歌" />
+
+</menu>
